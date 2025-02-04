@@ -46,7 +46,7 @@ const Header = () => {
                                     <li><a href=""></a><IoMdHeartEmpty /> Wishlist</li>
                                     <li><a href=""><IoLocationOutline /> Find Stores</a></li>
                                     <li><a href="">New in</a></li>
-                                    <li><a href="">Charms&Bracelets</a></li>
+                                    <li><a href="">Charms & Bracelets</a></li>
                                     <li><a href="">Rings</a></li>
                                     <li><a href="">Earrings</a></li>
                                     <li><a href="">Necklaces</a></li>

@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+    .image{
+        background-image: url(https://cdn.media.amplience.net/i/pandora/Q125_eStore_Val_Product_04_Extended?fmt=auto&qlt=80&crop={1.9%},{27.45%},{95.95%},{35.95%});
+        background-size: cover;
+        width: 100%;
+        height: 80vh;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: flex;
+        justify-content: flex-start;
+   
+  
+        .text{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 50px;
+            gap: 24px;
+
+            h1{
+                font-size: 58px;
+                font-weight: 700;
+                color: #27251F;
+                line-height: 1.1;
+            }
+
+            button{
+                display: flex;
+                padding: 11px;
+                width: 40%;
+                justify-content: center;
+                font-size: 11px;
+                background-color: #27251F;
+                color: white;
+                border: none;
+                font-weight: 500;
+
+                &:hover{
+                    background-color: black;
+                }
+            }
+          
+
+        }
+    }
+}
+
+
+
+@media (max-width: 576px) {
+    .section{
+        .image{
+            .text{
+                h1{
+                    font-size: 38px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width:776px) {
+    .section{
+        height: auto;
+        .image{
+            .text{
+                h1{
+                    font-size: 50px;
+                }
+            }
+        }
+    }
+}
