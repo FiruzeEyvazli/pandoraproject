@@ -7,11 +7,22 @@ import { IoBagOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
+import { useNavigate } from 'react-router-dom';
 const Header = () => {
 
     const [isOpen, setIsOpen] = React.useState(false)
     const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState)
+    }
+
+    const navigate =useNavigate()
+
+    const goToBasket = () => {
+        navigate('/basket')
+    }
+
+    const goToWishlist = () => {
+        navigate('/wishlist')
     }
     return (
         <div className={styles.header}>
@@ -24,10 +35,10 @@ const Header = () => {
                         <img src="https://nebula-cdn.kampyle.com/wu/619648/resources/image/1578337582571_Pandora_Logo_Black_RGB_Web_200x80@1x.png" alt="" />
                     </div>
                     <div className={styles.icons}>
-                        <div className={styles.icon}><IoMdHeartEmpty /></div>
+                        <div  onClick={goToWishlist} className={styles.icon}><IoMdHeartEmpty /></div>
+                        <div onClick={goToBasket} className={styles.icon}><IoBagOutline /></div>
                         <div className={styles.icon}><IoLocationOutline /></div>
                         <div className={styles.icon}> <FiUser /></div>
-                        <div className={styles.icon}><IoBagOutline /></div>
                     </div>
 
 
