@@ -3,24 +3,22 @@ import axios from "axios"
 import { deleteProductThunk } from "./productSlice"
 
 
-
-
-export const getBasketThunk = createAsyncThunk('get/basket', async () => {
-    const response = await axios.get('http://localhost:5000/basket')
+export const getWishlistThunk = createAsyncThunk('get/wishlist', async () => {
+    const response = await axios.get('http://localhost:5000/wishlist')
 
     return response.data
 })
 
-export const deleteBasketThunk = createAsyncThunk('products/delete', async (id) => {
-    const response = await axios.delete(`http://localhost:5000/basket/${id}`)
+export const deleteWishlistThunk = createAsyncThunk('products/delete', async (id) => {
+    const response = await axios.delete(`http://localhost:5000/wishlist/${id}`)
 
     return id
 })
 
 
 
-export const postBasketThunk = createAsyncThunk('post/basket', async (data) => {
-    const response = await axios.post('http://localhost:5000/basket', data)
+export const postWishlistThunk = createAsyncThunk('post/wishlist', async (data) => {
+    const response = await axios.post('http://localhost:5000/wishlist', data)
 
     return data
 })
@@ -29,44 +27,44 @@ export const postBasketThunk = createAsyncThunk('post/basket', async (data) => {
 
 
 
-export const basketSlice = createSlice({
-    name: 'basket',
+export const wishlistSlice = createSlice({
+    name: 'wishlist',
     initialState: {
-        basket: []
+        wishlist: []
     },
     reducers: {},
 
     extraReducers: builder => {
         builder
 
-            .addCase(getBasketThunk.fulfilled, (state, action) => {
+            .addCase(getWishlistThunk.fulfilled, (state, action) => {
                 state.loading = false
-                state.basket = action.payload
+                state.wishlist = action.payload
             })
 
-            .addCase(getBasketThunk.pending, (state) => {
+            .addCase(getWishlistThunk.pending, (state) => {
                 state.loading = true
             })
 
-            .addCase(getBasketThunk.rejected, (state, action) => {
+            .addCase(getWishlistThunk.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.error.message
             })
 
 
-            //post basket
+            //post wishlist
 
 
-            .addCase(postBasketThunk.fulfilled, (state,action) => {
+            .addCase(postWishlistThunk.fulfilled, (state,action) => {
                 state.loading =false
 
             })
 
-            .addCase(postBasketThunk.pending, (state) => {
+            .addCase(postWishlistThunk.pending, (state) => {
                 state.loading= true
             })
 
-            .addCase(postBasketThunk.rejected, (state,action) => {
+            .addCase(postWishlistThunk.rejected, (state,action) => {
                 state.loading=false
                 state.error= action.error.message
             })
@@ -74,11 +72,11 @@ export const basketSlice = createSlice({
 
 
 
-            // //delete basket
+            // //delete wishlist
 
             .addCase(deleteProductThunk.fulfilled, (state, action) => {
                 state.loading = false
-                state.basket = state.basket.filter(item => item._id !== action.payload)
+                state.wishlist = state.wishlist.filter(item => item._id !== action.payload)
             })
 
             .addCase(deleteProductThunk.pending, (state) => {
@@ -93,4 +91,4 @@ export const basketSlice = createSlice({
 })
 
 
-export default basketSlice.reducer
+export default wishlistSlice.reducer

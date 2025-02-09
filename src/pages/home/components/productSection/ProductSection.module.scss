@@ -12,6 +12,8 @@
     height: 80vh;
     flex-direction: column;
     gap: 50px;
+    margin-top: 10%;
+    margin-bottom: 10%;
 
     .header{
         h1{
@@ -27,6 +29,28 @@
         justify-content: center;
         align-items: center;
 
+    }
+
+
+    .onclick{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        padding-top: 30px;
+    
+        .buttons{
+            border: none;
+            padding: 10px;
+            background-color: #27251F;
+            color: white;
+            font-size: 15px;
+
+            &:hover{
+                background-color: black;
+            }
+    
+        }
     }
 }
 
