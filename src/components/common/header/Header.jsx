@@ -17,12 +17,21 @@ const Header = () => {
 
     const navigate =useNavigate()
 
+
+    const goToHome = () => {
+        navigate('/')
+    }
+
     const goToBasket = () => {
         navigate('/basket')
     }
 
     const goToWishlist = () => {
         navigate('/wishlist')
+    }
+
+    const goToAdminPanel = () => {
+        navigate('/adminpanel')
     }
     return (
         <div className={styles.header}>
@@ -32,12 +41,12 @@ const Header = () => {
             <div className={styles.headerMain}>
                 <div className={styles.functions}>
                     <div className={styles.logo}>
-                        <img src="https://nebula-cdn.kampyle.com/wu/619648/resources/image/1578337582571_Pandora_Logo_Black_RGB_Web_200x80@1x.png" alt="" />
+                        <img  onClick={goToHome} src="https://nebula-cdn.kampyle.com/wu/619648/resources/image/1578337582571_Pandora_Logo_Black_RGB_Web_200x80@1x.png" alt="" />
                     </div>
                     <div className={styles.icons}>
                         <div  onClick={goToWishlist} className={styles.icon}><IoMdHeartEmpty /></div>
                         <div onClick={goToBasket} className={styles.icon}><IoBagOutline /></div>
-                        <div className={styles.icon}><IoLocationOutline /></div>
+                        <div onClick={goToAdminPanel} className={styles.icon}><IoLocationOutline /></div>
                         <div className={styles.icon}> <FiUser /></div>
                     </div>
 

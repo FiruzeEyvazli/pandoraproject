@@ -16,6 +16,12 @@ export const deleteProductThunk =createAsyncThunk('products/delete', async (id) 
 })
 
 
+export const addFormikThunk = createAsyncThunk('api/formik', async (data) => {
+    const response = await axios.post('http://localhost:5000/products', data)
+
+    return data
+})
+
 
 export const productSlice = createSlice({
     name: 'products',
@@ -40,6 +46,39 @@ export const productSlice = createSlice({
             state.loading=false
             state.error= action.error.message
         })
+
+
+         //delete admin
+
+         .addCase(deleteProductThunk.fulfilled, (state,action) => {
+            state.loading= false
+            state.products = state.products.filter(item => item._id !== action.payload)
+        })
+
+        .addCase(deleteProductThunk.pending, (state) => {
+            state.loading=true
+        })
+
+        .addCase(deleteProductThunk.rejected, (state,action) => {
+            state.loading =false
+        })
+
+        //add Formik
+
+        .addCase(addFormikThunk.fulfilled, (state,action) => {
+            state.loading= false
+            
+        })
+
+        .addCase(addFormikThunk.pending, (state) => {
+            state.loading=true
+        })
+
+        .addCase(addFormikThunk.rejected, (state,action) => {
+            state.loading =false
+
+        })
+
 
         
 

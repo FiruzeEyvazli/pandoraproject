@@ -34,5 +34,27 @@
         height: auto;
 
     }
+
+
+    .onclick{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        padding-top: 30px;
+    
+        .buttons{
+            border: none;
+            padding: 10px;
+            background-color: #27251F;
+            color: white;
+            font-size: 15px;
+
+            &:hover{
+                background-color: black;
+            }
+    
+        }
+    }
 }
 
