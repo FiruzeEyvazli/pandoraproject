@@ -50,7 +50,7 @@ const ProductCard = ({item, AddBasket, AddWishlist}) => {
         </div>
         <div className={styles.text}>
         <h3>{item.title}</h3>
-        <p>{item.price}</p>
+        <p>{item.price}$</p>
        
         </div>
 

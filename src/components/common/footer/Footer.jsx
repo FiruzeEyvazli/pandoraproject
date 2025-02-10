@@ -21,6 +21,18 @@ const Footer = () => {
     const goToTermsCon = () => {
         navigate('/termscon')
     }
+
+    const goToBasket = () => {
+        navigate('/basket')
+    }
+
+    const goToWishlist = () => {
+        navigate('/wishlist')
+    }
+
+    const goToAdminPanel = () => {
+        navigate('/adminpanel')
+    }
     return (
         <div className={styles.footer}>
             <div className={styles.onediv}>
@@ -41,8 +53,8 @@ const Footer = () => {
                 <div className={styles.two}>
                     <div className={styles.text}>
                         <h4>Shop</h4>
-                        <p>New in</p>
-                        <p>Charms & Bracelets</p>
+                        <p>Charms</p>
+                        <p>Bracelets</p>
                         <p>Rings</p>
                         <p>Earrings</p>
                         <p>Necklaces</p>
@@ -50,9 +62,9 @@ const Footer = () => {
                     <div className={styles.text}>
                         <h4>Manage</h4>
                         <p onClick={goToCares}>Pandora Cares</p>
-                        <p>Basket</p>
-                        <p>Wishlist</p>
-                        <p>Register</p>
+                        <p onClick={goToBasket}>Basket</p>
+                        <p onClick={goToWishlist}>Wishlist</p>
+                        <p>Dashboard</p>
                         <p>Login</p>
                     </div>
                     <div className={styles.text}>

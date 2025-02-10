@@ -8,6 +8,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import { useNavigate } from 'react-router-dom';
+import { LuLayoutDashboard } from "react-icons/lu";
 const Header = () => {
 
     const [isOpen, setIsOpen] = React.useState(false)
@@ -46,7 +47,7 @@ const Header = () => {
                     <div className={styles.icons}>
                         <div  onClick={goToWishlist} className={styles.icon}><IoMdHeartEmpty /></div>
                         <div onClick={goToBasket} className={styles.icon}><IoBagOutline /></div>
-                        <div onClick={goToAdminPanel} className={styles.icon}><IoLocationOutline /></div>
+                        <div onClick={goToAdminPanel} className={styles.icon}><LuLayoutDashboard /></div>
                         <div className={styles.icon}> <FiUser /></div>
                     </div>
 
@@ -65,8 +66,8 @@ const Header = () => {
                                     <li><a href=""><FiUser /> User</a></li>
                                     <li><a href=""></a><IoMdHeartEmpty /> Wishlist</li>
                                     <li><a href=""><IoLocationOutline /> Find Stores</a></li>
-                                    <li><a href="">New in</a></li>
-                                    <li><a href="">Charms & Bracelets</a></li>
+                                    <li><a href="">Charms</a></li>
+                                    <li><a href="">Bracelets</a></li>
                                     <li><a href="">Rings</a></li>
                                     <li><a href="">Earrings</a></li>
                                     <li><a href="">Necklaces</a></li>
@@ -79,8 +80,8 @@ const Header = () => {
             </div>
             <div className={styles.content}>
                 <ul>
-                    <li><a href="">New in</a></li>
-                    <li><a href="">Charms&Bracelets</a></li>
+                    <li><a href="">Charms</a></li>
+                    <li><a href="">Bracelets</a></li>
                     <li><a href="">Rings</a></li>
                     <li><a href="">Earrings</a></li>
                     <li><a href="">Necklaces</a></li>

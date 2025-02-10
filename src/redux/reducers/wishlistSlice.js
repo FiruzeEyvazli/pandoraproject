@@ -9,6 +9,12 @@ export const getWishlistThunk = createAsyncThunk('get/wishlist', async () => {
     return response.data
 })
 
+
+export const updateWishlistThunk = createAsyncThunk('update/wishlist', async (product) => {
+    const response = await axios.put(`http://localhost:5000/wishlist/${product._id}`, product)
+    return response.data
+})
+
 export const deleteWishlistThunk = createAsyncThunk('products/delete', async (id) => {
     const response = await axios.delete(`http://localhost:5000/wishlist/${id}`)
 
@@ -68,6 +74,14 @@ export const wishlistSlice = createSlice({
                 state.loading=false
                 state.error= action.error.message
             })
+
+
+             .addCase(updateWishlistThunk.fulfilled, (state, action) => {
+                            state.loading = false;
+                            state.wishlist = state.wishlist.map((item) =>
+                                item._id === action.payload._id ? { ...item, quantity: action.payload.quantity } : item
+                            );
+                        })
 
 
 

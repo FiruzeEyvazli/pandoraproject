@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
-import { deleteProductThunk } from "./productSlice"
+
+
 
 
 
@@ -8,6 +9,12 @@ import { deleteProductThunk } from "./productSlice"
 export const getBasketThunk = createAsyncThunk('get/basket', async () => {
     const response = await axios.get('http://localhost:5000/basket')
 
+    return response.data
+})
+
+
+export const updateBasketThunk = createAsyncThunk('update/basket', async (product) => {
+    const response = await axios.put(`http://localhost:5000/basket/${product._id}`, product)
     return response.data
 })
 
@@ -25,7 +32,6 @@ export const postBasketThunk = createAsyncThunk('post/basket', async (data) => {
     return data
 })
 
-  
 
 
 
@@ -72,23 +78,33 @@ export const basketSlice = createSlice({
             })
 
 
+            .addCase(updateBasketThunk.fulfilled, (state, action) => {
+                state.loading = false;
+                state.basket = state.basket.map((item) =>
+                    item._id === action.payload._id ? { ...item, quantity: action.payload.quantity } : item
+                );
+            })
+
+            
 
 
             // //delete basket
 
-            .addCase(deleteProductThunk.fulfilled, (state, action) => {
+            .addCase(deleteBasketThunk.fulfilled, (state, action) => {
                 state.loading = false
                 state.basket = state.basket.filter(item => item._id !== action.payload)
             })
 
-            .addCase(deleteProductThunk.pending, (state) => {
+            .addCase(deleteBasketThunk.pending, (state) => {
                 state.loading = true
             })
 
-            .addCase(deleteProductThunk.rejected, (state, action) => {
+            .addCase(deleteBasketThunk.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.error.message
             })
+
+            
     }
 })
 

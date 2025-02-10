@@ -18,9 +18,38 @@
     margin-bottom: 10%;
 
     .header{
-        h1{
-            font-size: 35px;
-            font-weight: 700;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        gap: 400px;
+
+        .one{
+            h1{
+                font-size: 35px;
+                font-weight: 700;
+            }
+        }
+
+    }
+    .two{
+        display: flex;
+        margin-left: 65%;
+        align-items: center;
+        border: 1;
+
+        p{
+            font-size: 20px;
+            font-weight: 500;
+            border-bottom: 2px solid #27251F;
+            padding: 8px;
+            color: black;
+            align-items: center;
+            justify-content: center;
+
+            &:hover{
+                background-color: #ece9e9;
+            }
         }
     }
     
