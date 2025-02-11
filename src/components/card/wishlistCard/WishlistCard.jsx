@@ -22,7 +22,7 @@ const WishlistCard = ({item,DeleteWishlist, increaseQuantity,decreaseQuantity}) 
       </div>
       <div className={styles.text}>
         <h3>{item.title}</h3>
-        <p>{item.price}</p>
+        <p>{item.price}$</p>
       </div>
     </div>
   </div>

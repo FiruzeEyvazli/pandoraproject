@@ -9,6 +9,7 @@ import PrivacyPolicy from '../pages/home/addSection/privacyPolicy/PrivacyPolicy'
 import BasketSection from '../pages/home/addSection/basketSection/BasketSection'
 import WishlistSection from '../pages/home/addSection/aboutPandora/wishlistSection/WishlistSection'
 import AdminPanel from '../pages/home/addSection/adminPanel/AdminPanel'
+import CharmsSection from '../pages/home/addSection/charmsSection/CharmsSection'
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
             <Route path='/basket' element={<BasketSection/>} />
             <Route path='/wishlist' element={<WishlistSection/>} />
             <Route path='/adminpanel' element={<AdminPanel/>} />
+            <Route path='/charms' element={<CharmsSection/>} />
         </Routes>
         </BrowserRouter>
     </div>

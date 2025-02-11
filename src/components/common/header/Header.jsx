@@ -34,6 +34,7 @@ const Header = () => {
     const goToAdminPanel = () => {
         navigate('/adminpanel')
     }
+    
     return (
         <div className={styles.header}>
             <div className={styles.join}>
@@ -66,11 +67,11 @@ const Header = () => {
                                     <li><a href=""><FiUser /> User</a></li>
                                     <li><a href=""></a><IoMdHeartEmpty /> Wishlist</li>
                                     <li><a href=""><IoLocationOutline /> Find Stores</a></li>
-                                    <li><a href="">Charms</a></li>
+                                    <li><a href="/charms">Charms</a></li>
                                     <li><a href="">Bracelets</a></li>
                                     <li><a href="">Rings</a></li>
-                                    <li><a href="">Earrings</a></li>
                                     <li><a href="">Necklaces</a></li>
+                                    <li><a href="">Collections</a></li>
                                 </ul>
                             </div>
                         </Drawer>
@@ -80,11 +81,11 @@ const Header = () => {
             </div>
             <div className={styles.content}>
                 <ul>
-                    <li><a href="">Charms</a></li>
+                    <li><a href="/charms">Charms</a></li>
                     <li><a href="">Bracelets</a></li>
                     <li><a href="">Rings</a></li>
-                    <li><a href="">Earrings</a></li>
                     <li><a href="">Necklaces</a></li>
+                    <li><a href="">Collections</a></li>
 
                 </ul>
             </div>
