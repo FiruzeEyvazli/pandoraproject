@@ -82,9 +82,9 @@ const Header = () => {
             <div className={styles.content}>
                 <ul>
                     <li><a href="/charms">Charms</a></li>
-                    <li><a href="">Bracelets</a></li>
-                    <li><a href="">Rings</a></li>
-                    <li><a href="">Necklaces</a></li>
+                    <li><a href="/bracelet">Bracelets</a></li>
+                    <li><a href="/rings">Rings</a></li>
+                    <li><a href="/necklaces">Necklaces</a></li>
                     <li><a href="">Collections</a></li>
 
                 </ul>

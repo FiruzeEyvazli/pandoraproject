@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CategoryCard from '../../../../../../components/card/categoryCard/CategoryCard';
-import styles from './Charms.module.scss';
+import styles from "./Necklaces.module.scss"
 import { getCategoryThunk } from '../../../../../../redux/reducers/categorySlice';
 
-const Charms = () => {
+const Necklaces = () => {
     const dispatch = useDispatch();
 
     const category = useSelector(state => state.category.category);
@@ -23,7 +23,7 @@ const Charms = () => {
     if (loading) return <p>Yüklənir....</p>;
     if (error) return <p>Xəta baş verdi......</p>;
 
-    const charmsCategory = category.filter(item => item.category === "charms");
+    const charmsCategory = category.filter(item => item.category === "necklace");
 
     const filteredProducts = charmsCategory
         .filter(item => item.title.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -106,4 +106,4 @@ const Charms = () => {
     );
 };
 
-export default Charms;
+export default Necklaces;

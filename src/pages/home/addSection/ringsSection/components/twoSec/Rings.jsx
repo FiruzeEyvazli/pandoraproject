@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CategoryCard from '../../../../../../components/card/categoryCard/CategoryCard';
-import styles from './Charms.module.scss';
+import styles from "./Rings.module.scss"
 import { getCategoryThunk } from '../../../../../../redux/reducers/categorySlice';
 
-const Charms = () => {
+
+const Rings = () => {
     const dispatch = useDispatch();
 
     const category = useSelector(state => state.category.category);
@@ -23,7 +24,7 @@ const Charms = () => {
     if (loading) return <p>Yüklənir....</p>;
     if (error) return <p>Xəta baş verdi......</p>;
 
-    const charmsCategory = category.filter(item => item.category === "charms");
+    const charmsCategory = category.filter(item => item.category === "rings");
 
     const filteredProducts = charmsCategory
         .filter(item => item.title.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -60,7 +61,7 @@ const Charms = () => {
 
     return (
         <div className={styles.section}>
-            <div className={styles.header}>
+             <div className={styles.header}>
                 <h2>Complete your look..</h2>
             </div>
             <div className={styles.controlPanel}>
@@ -106,4 +107,4 @@ const Charms = () => {
     );
 };
 
-export default Charms;
+export default Rings;

@@ -10,6 +10,9 @@ import BasketSection from '../pages/home/addSection/basketSection/BasketSection'
 import WishlistSection from '../pages/home/addSection/aboutPandora/wishlistSection/WishlistSection'
 import AdminPanel from '../pages/home/addSection/adminPanel/AdminPanel'
 import CharmsSection from '../pages/home/addSection/charmsSection/CharmsSection'
+import BraceletSection from '../pages/home/addSection/braceletSection/BraceletSection'
+import RingsSection from '../pages/home/addSection/ringsSection/RingsSection'
+import NecklacesSection from '../pages/home/addSection/necklacesSection/NecklacesSection'
 
 const Router = () => {
   return (
@@ -26,6 +29,9 @@ const Router = () => {
             <Route path='/wishlist' element={<WishlistSection/>} />
             <Route path='/adminpanel' element={<AdminPanel/>} />
             <Route path='/charms' element={<CharmsSection/>} />
+            <Route path='/bracelet' element={<BraceletSection/>} />
+            <Route path='/rings' element={<RingsSection/>} />
+            <Route path='/necklaces' element={<NecklacesSection/>} />
         </Routes>
         </BrowserRouter>
     </div>
