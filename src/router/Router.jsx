@@ -13,6 +13,7 @@ import CharmsSection from '../pages/home/addSection/charmsSection/CharmsSection'
 import BraceletSection from '../pages/home/addSection/braceletSection/BraceletSection'
 import RingsSection from '../pages/home/addSection/ringsSection/RingsSection'
 import NecklacesSection from '../pages/home/addSection/necklacesSection/NecklacesSection'
+import CollectionsSection from '../pages/home/addSection/collectionsSection/CollectionsSection'
 
 const Router = () => {
   return (
@@ -32,6 +33,7 @@ const Router = () => {
             <Route path='/bracelet' element={<BraceletSection/>} />
             <Route path='/rings' element={<RingsSection/>} />
             <Route path='/necklaces' element={<NecklacesSection/>} />
+            <Route path='/collection' element={<CollectionsSection/>} />
         </Routes>
         </BrowserRouter>
     </div>
