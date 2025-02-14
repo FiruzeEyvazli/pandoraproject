@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from "./Collection.module.scss"
+import CategoryCard from '../../../../../../components/card/categoryCard/CategoryCard';
 import { getCategoryThunk } from '../../../../../../redux/reducers/categorySlice';
 
 
