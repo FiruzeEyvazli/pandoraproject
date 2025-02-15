@@ -66,3 +66,183 @@ box-shadow: inset 0px 0px 105px -200px rgba(0,0,0,1);
 
 
 
+
+
+@media (max-width: 1076px) {
+    .divSection{
+        .section{
+            display: flex;
+            align-items: center;
+
+.imgBox{
+    width: 60%;
+}      
+
+.texts{
+    width: 45%;
+    padding: 60px;
+
+    h1{
+        font-size: 48px;
+    }
+    h2{
+        font-size: 40px;
+    }
+    h3{
+        font-size: 40px;
+    }
+    p{
+        font-size: 15px;
+    }
+
+}
+  }
+    }
+}
+
+
+
+@media (max-width: 992px) {
+    .divSection{
+        .section{
+            display: flex;
+            align-items: center;
+
+.imgBox{
+    width: 65%;
+}      
+
+.texts{
+    width: 45%;
+    padding: 65px;
+
+    h1{
+        font-size: 45px;
+    }
+    h2{
+        font-size: 35px;
+    }
+    h3{
+        font-size: 35px;
+    }
+    p{
+        font-size: 13px;
+    }
+
+}
+  }
+    }
+}
+
+@media (max-width: 756px) {
+    .divSection{
+        height: auto;
+        .section{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 50px;
+
+.imgBox{
+    width: 90%;
+}      
+
+.texts{
+    width: 100%;
+    padding: 60px;
+
+    h1{
+        font-size: 40px;
+    }
+    h2{
+        font-size: 30px;
+    }
+    h3{
+        font-size: 30px;
+    }
+    p{
+        font-size: 11px;
+    }
+
+}
+  }
+    }
+}
+
+
+
+@media (max-width: 479px) {
+    .divSection{
+        height: auto;
+        .section{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+      
+
+.imgBox{
+    width: 90%;
+}      
+
+.texts{
+    width: 100%;
+    padding: 60px;
+
+    h1{
+        font-size: 40px;
+    }
+    h2{
+        font-size: 30px;
+    }
+    h3{
+        font-size: 30px;
+    }
+    p{
+        font-size: 11px;
+    }
+
+}
+  }
+    }
+}
+
+
+
+@media (max-width: 300px) {
+    .divSection{
+        height: auto;
+     
+        .section{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+      
+
+.imgBox{
+    width: 100%;
+}      
+
+.texts{
+    width: 100%;
+    padding: 10px;
+
+    h1{
+        font-size: 40px;
+    }
+    h2{
+        font-size: 30px;
+    }
+    h3{
+        font-size: 30px;
+    }
+    p{
+        font-size: 11px;
+    }
+
+}
+  }
+    }
+}
+
+
+
