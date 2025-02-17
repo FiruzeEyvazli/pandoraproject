@@ -58,6 +58,8 @@
 
 
 
+
+
 @media (max-width: 576px) {
     .section{
         .image{
@@ -77,6 +79,21 @@
             .text{
                 h1{
                     font-size: 50px;
+                }
+            }
+        }
+    }
+    
+}
+@media (min-width: 300px) {
+    .section{
+        .image{
+            .text{
+                h1{
+                    font-size: 30px;
+                }
+                button{
+                    width: 70%;
                 }
             }
         }
