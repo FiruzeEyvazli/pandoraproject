@@ -14,28 +14,34 @@ import BraceletSection from '../pages/home/addSection/braceletSection/BraceletSe
 import RingsSection from '../pages/home/addSection/ringsSection/RingsSection'
 import NecklacesSection from '../pages/home/addSection/necklacesSection/NecklacesSection'
 import CollectionsSection from '../pages/home/addSection/collectionsSection/CollectionsSection'
+import LoginSection from '../pages/home/addSection/login/LoginSection'
+import Profile from '../pages/home/addSection/profile/Profile'
+import RegisterContent from '../pages/home/addSection/register/RegisterContent'
 
 const Router = () => {
   return (
     <div>
-        <BrowserRouter>
+      <BrowserRouter>
         <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/cares' element={<PandoraCares/>} />
-            <Route path='/about' element={<AboutPandora/>} />
-            <Route path='/termscon' element={<TermsCon/>} />
-            <Route path='/cookie' element={<CookiePolicy/>} />
-            <Route path='/privacy' element={<PrivacyPolicy/>} />
-            <Route path='/basket' element={<BasketSection/>} />
-            <Route path='/wishlist' element={<WishlistSection/>} />
-            <Route path='/adminpanel' element={<AdminPanel/>} />
-            <Route path='/charms' element={<CharmsSection/>} />
-            <Route path='/bracelet' element={<BraceletSection/>} />
-            <Route path='/rings' element={<RingsSection/>} />
-            <Route path='/necklaces' element={<NecklacesSection/>} />
-            <Route path='/collection' element={<CollectionsSection/>} />
+          <Route path='/' element={<Home />} />
+          <Route path='/cares' element={<PandoraCares />} />
+          <Route path='/about' element={<AboutPandora />} />
+          <Route path='/termscon' element={<TermsCon />} />
+          <Route path='/cookie' element={<CookiePolicy />} />
+          <Route path='/privacy' element={<PrivacyPolicy />} />
+          <Route path='/basket' element={<BasketSection />} />
+          <Route path='/wishlist' element={<WishlistSection />} />
+          <Route path='/adminpanel' element={<AdminPanel />} />
+          <Route path='/charms' element={<CharmsSection />} />
+          <Route path='/bracelet' element={<BraceletSection />} />
+          <Route path='/rings' element={<RingsSection />} />
+          <Route path='/necklaces' element={<NecklacesSection />} />
+          <Route path='/collection' element={<CollectionsSection />} />
+          <Route path='/register' element={<RegisterContent />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/login' element={<LoginSection />} />
         </Routes>
-        </BrowserRouter>
+      </BrowserRouter>
     </div>
   )
 }
