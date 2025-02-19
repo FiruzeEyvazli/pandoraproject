@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section{
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.image{
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    background-image: url(https://cdn.media.amplience.net/i/pandora/Q224_D_PDP_Product_Styled_08_RGB_Extended?crop={30.88%},{36.77%},{42.27%},{16.11%}&fmt=auto&qlt=80);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    position: absolute;
+    top: 70%;
+    left: 2%;
+    transform: translateY(-50%);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.text h1{
+    font-size: 54px;
+    font-weight: 700;
+}
+
+
+@media (max-width: 992px) {
+    .text{
+        width: 40%;
+        left: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .text{
+        width: 50%;
+        left: 7%;
+      
+   
+    }
+
+    .text h1{
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 576px) {
+    .text{
+        width: 80%;
+        left: 10%;
+
+    }
+
+    .text h1{
+        font-size: 30px;
+    }
+}
+
+
+
+@media (max-width: 400px) {
+    .text{
+        width: 90%;
+        left: 5%;
+
+    }
+
+    .text h1{
+        font-size: 35px;
+    }
+
+}
+
+@media (max-width: 250px) {
+    .text{
+        width: 95%;
+        left: 2.5%;
+    }
+
+    .text h1{
+        font-size: 25px;
+    }
+
+}
