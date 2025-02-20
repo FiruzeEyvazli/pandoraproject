@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../../../redux/reducers/authSlice'; // Redux action
+import { getUser, logoutUser } from '../../../../redux/reducers/authSlice'; // Redux actions
 import { useNavigate } from 'react-router-dom'; // useNavigate hook-u
 import styless from './Profile.module.scss';
 
@@ -13,19 +13,15 @@ const Profile = () => {
         dispatch(getUser()); // Komponent yükləndikdə istifadəçi məlumatlarını əldə et
     }, [dispatch]);
 
-    useEffect(() => {
-        console.log(user); // İstifadəçi məlumatlarını konsola yazdır
-    }, [user]);
+    const handleLogout = async () => {
+        // Logout funksiyasını çağırırıq
+        await dispatch(logoutUser()); // Redux'dan logout funksiyası
+        localStorage.removeItem('authToken'); // Tokeni localStorage-dən silmək
+        navigate('/login'); // Login səhifəsinə yönləndirmək
+    };
 
     if (loading) return <p className={styless.loading}>Yüklənir...</p>;
     if (error) return <p className={styless.error}>Xəta: {error.message}</p>;
-
-    const handleLogout = () => {
-        // Çıxış funksiyasını burada əlavə edin
-        // Məsələn, istifadəçi məlumatlarını silmək və ya autentifikasiya vəziyyətini yeniləmək
-        // Sonra istifadəçini giriş səhifəsinə yönləndirin
-        navigate('/login');
-    };
 
     return (
         <div className={styless.profileContainer}>

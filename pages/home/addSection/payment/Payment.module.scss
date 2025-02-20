@@ -44,14 +44,14 @@
         font-size: 1rem;
         font-weight: bold;
         color: #fff;
-        background: linear-gradient(45deg, #007bff, #00d4ff);
+        background: linear-gradient(45deg, #383837, #b9b8b3);
         border: none;
         border-radius: 5px;
         cursor: pointer;
         transition: background 0.3s ease;
   
         &:hover {
-          background: linear-gradient(45deg, #006ae0, #00c8e8);
+          background: linear-gradient(45deg, #080808, #5f5f5d);
         }
   
         &:disabled {

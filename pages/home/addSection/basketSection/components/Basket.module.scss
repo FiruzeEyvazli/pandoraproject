@@ -70,7 +70,7 @@
         gap: 10px;
         align-items: center;
         justify-content: center;
-        padding-top: 30px;
+        padding-top: 90px;
     
         .buttons{
             border: none;
@@ -85,5 +85,95 @@
     
         }
     }
+
+
+    .buttonContainer {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 80px;
+  
+    
+        .totalAmountButton {
+            background-color: grey;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: default;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        .checkoutButton {
+            background-color: rgb(53, 52, 52);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    
+            &:hover {
+                background-color: black;
+                transform: scale(1.05);
+            }
+    
+            &:active {
+                transform: scale(0.95);
+            }
+        }
+    }
+    
 }
 
+
+
+
+
+@media (max-width: 1024px) {
+    .section {
+        gap: 20px;
+        height: auto;
+    }
+    .products {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        text-align: center;
+    }
+    .two {
+        justify-content: center;
+        margin-left: 0;
+    }
+    .products {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .buttonContainer {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 0 10px;
+    }
+    .header h1 {
+        font-size: 24px;
+    }
+    .totalAmountButton,
+    .checkoutButton {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}

@@ -33,7 +33,7 @@ const Register = () => {
         <div className={styles['register-container']}>
     <form className={styles['register-form']} onSubmit={handleSubmit}>
         <h2>Create an Account</h2>
-        {error && <p>{error}</p>}
+        {error && <p className={styles['error-message']}>{error.message || 'An error occurred'}</p>}
         <input
             type="text"
             placeholder="Name"

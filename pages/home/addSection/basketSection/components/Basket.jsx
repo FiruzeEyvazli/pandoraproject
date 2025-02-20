@@ -12,11 +12,23 @@ const Basket = () => {
     const loading = useSelector(state => state.basket.loading);
     const error = useSelector(state => state.basket.error);
 
-    // Səbətin ümumi məbləğini hesablayan funksiya
+    const [page, setPage] = useState(1);
+    const itemsPerPage = 3;
+
+    useEffect(() => {
+        dispatch(getBasketThunk());
+    }, [dispatch]);
+
+    // Səhifənin boş qalmasının qarşısını almaq üçün istifadə olunur
+    useEffect(() => {
+        const totalPages = Math.ceil(basket.length / itemsPerPage);
+        if (basket.length > 0 && page > totalPages) {
+            setPage(totalPages || 1);
+        }
+    }, [basket, page]);
+
     const getTotalAmount = () => {
-        const total = basket.reduce((total, item) => total + item.price * item.quantity, 0);
-        console.log("Ümumi məbləğ:", total); // Konsolda yoxlamaq üçün
-        return total;
+        return basket.reduce((total, item) => total + item.price * item.quantity, 0);
     };
 
     const handleCheckout = () => {
@@ -24,16 +36,26 @@ const Basket = () => {
             alert("Səbətiniz boşdur!");
             return;
         }
-
         const totalAmount = getTotalAmount();
-        console.log("Checkout zamanı göndərilən məbləğ:", totalAmount); // Yoxlama üçün
-
         navigate("/payment", { state: { totalAmount } });
     };
 
-    useEffect(() => {
-        dispatch(getBasketThunk());
-    }, [dispatch]);
+    const handleDeleteBasket = (itemId) => {
+        // Məhsul silindikdən sonra səhifəni avtomatik yenilə
+        dispatch(deleteBasketThunk(itemId));
+    };
+
+    // Səhifələnmə üçün lazım olan indekslər
+    const lastBasketIndex = page * itemsPerPage;
+    const firstBasketIndex = lastBasketIndex - itemsPerPage;
+
+    // Məhsulları ardıcıl göstərmək üçün silinmiş məhsulları nəzərə alırıq
+    const currentBasket = basket.slice(firstBasketIndex, lastBasketIndex);
+
+    let pagesArray = [];
+    for (let i = 1; i <= Math.ceil(basket.length / itemsPerPage); i++) {
+        pagesArray.push(i);
+    }
 
     if (loading) return <p>Yüklənir...</p>;
     if (error) return <p>Xəta baş verdi...</p>;
@@ -47,24 +69,50 @@ const Basket = () => {
                 <p>Məhsul sayı: {basket.reduce((total, item) => total + item.quantity, 0)}</p>
             </div>
             <div className={styles.products}>
-                {basket.length > 0 ? (
-                    basket.map(item => (
+                {currentBasket.length > 0 ? (
+                    currentBasket.map(item => (
                         <BasketCard 
                             key={item._id} 
                             item={item} 
-                            DeleteBasket={() => dispatch(deleteBasketThunk(item._id))}
+                            DeleteBasket={() => {
+                                if (item.quantity > 1) {
+                                    dispatch(updateBasketThunk({ ...item, quantity: item.quantity - 1 }));
+                                } else {
+                                    dispatch(deleteBasketThunk(item._id));
+                                }
+                            }}
                             increaseQuantity={() => dispatch(updateBasketThunk({ ...item, quantity: item.quantity + 1 }))}
                             decreaseQuantity={() => item.quantity > 1 && dispatch(updateBasketThunk({ ...item, quantity: item.quantity - 1 }))}
                         />
                     ))
                 ) : (
-                    <p>Səbətdə mehsul yoxdur!</p>
+                    <p>Səbətdə məhsul yoxdur!</p>
                 )}
             </div>
+
+            {basket.length > itemsPerPage && (
+                <div className={styles.onclick}>
+                    {pagesArray.map(item => (
+                        <button 
+                            key={item} 
+                            className={`${styles.buttons} ${page === item ? styles.active : ""}`} 
+                            onClick={() => setPage(item)}
+                        >
+                            {item}
+                        </button>
+                    ))}
+                </div>
+            )}
+
             {basket.length > 0 && (
-                <button className={styles.checkoutButton} onClick={handleCheckout}>
-                    Ödəniş et
-                </button>
+                <div className={styles.buttonContainer}>
+                    <button className={styles.totalAmountButton}>
+                        Ümumi: {getTotalAmount()} $
+                    </button>
+                    <button className={styles.checkoutButton} onClick={handleCheckout}>
+                        Ödəniş et
+                    </button>
+                </div>
             )}
         </div>
     );

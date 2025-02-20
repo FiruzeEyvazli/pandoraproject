@@ -21,7 +21,7 @@ const Login = () => {
         <div className={styless['login-container']}>
             <form className={styless['login-form']} onSubmit={handleSubmit}>
                 <h2>Login</h2>
-                {error && <p className={styless['error-message']}>{error}</p>}
+                {error && <p className={styless['error-message']}>{error.message || 'Xəta baş verdi'}</p>}
                 <input
                     type="email"
                     placeholder="Email"

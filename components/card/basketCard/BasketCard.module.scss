@@ -16,10 +16,56 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-      align-items: center;
       gap: 20px;
-      justify-content: center;
-  
+      height: 400px;
+      
+      .quantity {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 60%;
+        .totalPrice {
+          font-weight: bold;
+          color: #d91f46;
+        }
+        .quan{
+          display: flex;
+          gap: 3px;
+          
+                  button {
+                    width: 30px;
+                    height: 30px;
+                    border: none;
+                    border-radius: 50%;
+                    background-color: #e4e4e4;
+                    font-size: 18px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    
+                   
+          
+                    &:hover {
+                      background-color: pink;
+                      color: white;
+                      transform: scale(1.3);
+                    }
+          
+                    &:active {
+                      transform: scale(0.95);
+                    }
+                  }
+
+        }
+
+        span {
+          font-size: 18px;
+          font-weight: bold;
+          min-width: 30px;
+          text-align: center;
+        }
+      }
       .imgBox {
         width: 100%;
         height: auto;
@@ -63,52 +109,8 @@
             }
           }
   
-          .quantity {
-            display: flex;
-            position: absolute;
-            top: 25px;
-            right: 180px;
-            gap: 5px;
-            opacity: 0;
-            visibility: visible;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-  
-            button {
-              width: 30px;
-              height: 30px;
-              border: none;
-              border-radius: 50%;
-              background-color: #e4e4e4;
-              font-size: 18px;
-              font-weight: bold;
-              cursor: pointer;
-              transition: background-color 0.2s ease, transform 0.2s ease;
-  
-              &:hover {
-                background-color: pink;
-                color: white;
-                transform: scale(1.3);
-              }
-  
-              &:active {
-                transform: scale(0.95);
-              }
-            }
-  
-            span {
-              font-size: 18px;
-              font-weight: bold;
-              min-width: 30px;
-              text-align: center;
-            }
-          }
         }
-  
-        &:hover .quantity {
-          opacity: 1;
-          visibility: visible;
-          transform: translateY(-5px);
-        }
+        
       }
   
       .text {
@@ -129,3 +131,37 @@
     }
   }
   
+
+  
+@media (max-width: 1024px) {
+ .container{
+  width: 50%;
+  display: flex;
+  gap: 80px;
+.card{
+  height: 600px;
+}
+ }
+}
+
+@media (max-width: 768px) {
+  .container{
+    width: 70%;
+    display: flex;
+    gap: 20px;
+  .card{
+    height: 550px;
+  }
+   }
+}
+
+@media (max-width: 480px) {
+  .container{
+    width: 80%;
+    display: flex;
+    gap: 20px;
+  .card{
+    height: 500px;
+  }
+   }
+}
