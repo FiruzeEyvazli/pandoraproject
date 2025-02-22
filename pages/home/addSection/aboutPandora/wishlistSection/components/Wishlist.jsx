@@ -10,61 +10,45 @@ const Wishlist = () => {
     const loading = useSelector(state => state.wishlist.loading)
     const error = useSelector(state => state.wishlist.error)
 
-    // Wishlist'e yeni mehsul elave etmek (yeni və ya mövcud miqdarı artırmaq)
-    const addToWishlist = (product) => {
-        // Əgər məhsul artıq wishlist-də varsa, heç bir şey etməyək
-        const existingProduct = wishlist.find(item => item._id === product._id);
-        
-        if (!existingProduct) {
-            // Məhsul wishlist-də yoxdursa, yeni məhsulu əlavə et
-            dispatch(getWishlistThunk()); // Yeni məhsulu əlavə et (yeni məlumatı əldə et)
-        }
-    };
+    const [page, setPage] = useState(1)
+    const itemsPerPage = 3;
 
-    const DeleteWishlist = (id) => {
+    useEffect(() => {
+        dispatch(getWishlistThunk())
+    }, [dispatch]);
+
+    // Silinməni idarə edən funksiya
+    const handleDeleteWishlist = (id) => {
         dispatch(deleteWishlistThunk(id)).then(() => {
-            dispatch(getWishlistThunk()); // Backend'den güncel veriyi tekrar çek
+            dispatch(getWishlistThunk());
         });
     };
 
-    const increaseQuantity = (id) => {
-        const updatedProduct = wishlist.find(item => item._id === id);
-        const updatedItem = { ...updatedProduct, quantity: updatedProduct.quantity + 1 };
-        dispatch(updateWishlistThunk(updatedItem));
-    };
-
-    const decreaseQuantity = (id) => {
-        const updatedProduct = wishlist.find(item => item._id === id);
-        if (updatedProduct.quantity > 1) {
-            const updatedItem = { ...updatedProduct, quantity: updatedProduct.quantity - 1 };
-            dispatch(updateWishlistThunk(updatedItem));
+    // Səhifələnməni idarə etmək
+    useEffect(() => {
+        const totalPages = Math.ceil(wishlist.length / itemsPerPage);
+        if (wishlist.length > 0 && page > totalPages) {
+            setPage(totalPages || 1);
         }
-    };
+    }, [wishlist, page]);
 
-    // Pagination
-    const [page, setPage] = useState(1)
-    const [wishlistPage, setwishlistPage] = useState(3)
+    // Pagination üçün göstəriləcək məhsullar
+    const lastWishlistIndex = page * itemsPerPage;
+    const firstWishlistIndex = lastWishlistIndex - itemsPerPage;
+    const currentWishlist = wishlist.slice(firstWishlistIndex, lastWishlistIndex);
 
-    const lastWishlistIndex = page * wishlistPage
-    const firstWishlistIndex = lastWishlistIndex - wishlistPage
-    const currentWishlist = wishlist.slice(firstWishlistIndex, lastWishlistIndex)
-
-    let dummy = []
-    for (let i = 1; i <= Math.ceil(wishlist.length / wishlistPage); i++) {
-        dummy.push(i)
+    let pagesArray = [];
+    for (let i = 1; i <= Math.ceil(wishlist.length / itemsPerPage); i++) {
+        pagesArray.push(i);
     }
 
-    useEffect(() => {dispatch(getWishlistThunk())}, [])
-
-    if (loading) return <p>Yuklenir....</p>
-    if (error) return <p>Xeta bas verdi....</p>
+    if (loading) return <p>Yüklənir...</p>
+    if (error) return <p>Xəta baş verdi...</p>
 
     return (
         <div className={styles.section}>
             <div className={styles.header}>
-                <div className={styles.one}>
-                    <h1>Sevimlilərim</h1>
-                </div>
+                <h1>Sevimlilərim</h1>
             </div>
 
             <div className={styles.products}>
@@ -73,25 +57,29 @@ const Wishlist = () => {
                         <WishlistCard 
                             key={item._id} 
                             item={item} 
-                            DeleteWishlist={() => DeleteWishlist(item._id)} 
-                            increaseQuantity={increaseQuantity}
-                            decreaseQuantity={decreaseQuantity}
+                            DeleteWishlist={() => handleDeleteWishlist(item._id)} 
                         />
                     ))
                 ) : (
-                    <p>Səbətdə mehsul yoxdur!</p>
+                    <p>Sevimlilər siyahınız boşdur!</p>
                 )}
             </div>
 
-            <div className={styles.onclick}>
-                {dummy.map(item => (
-                    <button key={item} className={styles.buttons} onClick={() => setPage(item)}>
-                        {item}
-                    </button>
-                ))}
-            </div>
+            {wishlist.length > itemsPerPage && (
+                <div className={styles.onclick}>
+                    {pagesArray.map(item => (
+                        <button 
+                            key={item} 
+                            className={`${styles.buttons} ${page === item ? styles.active : ""}`} 
+                            onClick={() => setPage(item)}
+                        >
+                            {item}
+                        </button>
+                    ))}
+                </div>
+            )}
         </div>
     )
 }
 
-export default Wishlist
+export default Wishlist;

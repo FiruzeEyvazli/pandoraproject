@@ -5,6 +5,11 @@ import { loginUser } from '../../../../../redux/reducers/authSlice';
 import styless from './Login.module.scss';  // SCSS faylını idxal edin
 
 const Login = () => {
+
+
+    const goToRegister = () => {
+        navigate('/register')
+    }
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
@@ -36,10 +41,17 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
+                <div className={styless['buttons']}>
                 <button type="submit" disabled={loading}>
                     {loading ? 'Logging in...' : 'Login'}
                 </button>
+                </div>
+            <div className={styless['login']}>
+            <p> "No account yet? Sign up now!"</p>
+            <button onClick={goToRegister}>Sign Up</button>
+        </div>
             </form>
+
         </div>
     );
 };

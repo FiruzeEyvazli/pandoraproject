@@ -10,8 +10,9 @@ const Profile = () => {
     const { user, loading, error } = useSelector((state) => state.auth);
 
     useEffect(() => {
-        dispatch(getUser()); // Komponent yükləndikdə istifadəçi məlumatlarını əldə et
+        dispatch(getUser()).then((res) => console.log("User data:", res));
     }, [dispatch]);
+    
 
     const handleLogout = async () => {
         // Logout funksiyasını çağırırıq
@@ -37,8 +38,8 @@ const Profile = () => {
                 <p>İstifadəçi tapılmadı.</p>
             )}
             <div className={styless.buttons}>
-                <button onClick={() => navigate('/adminpanel')}>İdarə Panelinə Keç</button>
-                <button onClick={handleLogout}>Çıxış</button>
+                <button onClick={() => navigate('/adminpanel')}>Admin Panel</button>
+                <button onClick={handleLogout}>Logout</button>
             </div>
         </div>
     );

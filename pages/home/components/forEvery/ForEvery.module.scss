@@ -33,13 +33,13 @@
             width: 100%;
             justify-content: space-between;
             margin-top: 80px;
-            
+            align-items: center;
 
             .cart{
                 width: 30%;
                 display: flex;
                 flex-direction: column;
-                height: 110vh;
+                height: 95vh;
                 gap: 32px;
                 -webkit-box-shadow: 9px 9px 15px -8px rgba(0,0,0,0.51);
                 -moz-box-shadow: 9px 9px 15px -8px rgba(0,0,0,0.51);
@@ -108,7 +108,7 @@
 
 
 
-@media (min-width: 768px) and (max-width: 1150px){
+@media (min-width: 900px) and (max-width: 1150px){
     .divSection{
         height: auto;
         margin-top: 10%;
@@ -123,7 +123,7 @@
                 gap: 50px;
                 .cart{
                     width: 60%;
-                    height: 100vh;
+                    height: 90vh;
 
                     button{
                         width: 70%;
@@ -136,14 +136,17 @@
 
 
 
-@media (max-width: 767px){
+@media (max-width: 899px){
     .divSection{
         height: auto;
         margin-top: 20%;
         display: flex;
         align-items: center;
+        justify-content: center;
         .section{
             height: auto;
+            display: flex;
+            justify-content: center;
             .cards{
                 display: flex;
                 flex-direction: column;
@@ -152,7 +155,38 @@
                 gap: 50px;
                 .cart{
                     width: 60%;
-                    height: 115vh;
+                    height: 105vh;
+
+                    button{
+                        width: 60%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 756px){
+    .divSection{
+        height: auto;
+        margin-top: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .section{
+            height: auto;
+            display: flex;
+            justify-content: center;
+            .cards{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 50px;
+                .cart{
+                    width: 60%;
+                    height: 95vh;
 
                     button{
                         width: 60%;
@@ -170,7 +204,7 @@
             .cards{
                 .cart{
                     width: 70%;
-                    height: 120vh;
+                    height: 90vh;
 
                     button{
                         width: 60%;
@@ -187,10 +221,21 @@
     .divSection{
         .section{
             height: auto;
+            align-items: center;
+            justify-content: center;
+
+            .header{
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                h1{
+                    font-size: 30px;
+                }
+            }
             .cards{
                 .cart{
                     width: 80%;
-                    height: 105vh;
+                    height: 85vh;
 
                     button{
                         width: 60%;
