@@ -19,6 +19,7 @@ const CheckoutForm = ({ total }) => {
   const navigate = useNavigate();
 
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!stripe || !elements) return;
@@ -53,7 +54,7 @@ const CheckoutForm = ({ total }) => {
           type="string"
           id="amount"
           readOnly
-          value={` ${amount} USD`}
+          value={` ${amount} $`}
           onChange={(e) => setAmount(e.target.value)}
           min="0"
           step="0.01"
@@ -70,19 +71,31 @@ const CheckoutForm = ({ total }) => {
 const PaymentPage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const { total } = location.state;
+  const { basket, totalAmount, clientSecret } = location.state;  // `clientSecret` və digər məlumatları çəkirik
   const { payment, loading, error } = useSelector((state) => state.payment);
-  const [amount, setAmount] = useState(total);
+  const [amount, setAmount] = useState(totalAmount);
+
+
+  const navigate = useNavigate();
+
+  const goToBasket = () => {
+      navigate('/basket')
+  }
 
   useEffect(() => {
-    dispatch(createPaymentIntentThunk(amount * 100)); // Toplam tutar için intent yaradırıq (cent cinsinden)
-  }, [dispatch, amount]);
+    if (clientSecret) {
+      dispatch(createPaymentIntentThunk(amount * 100)); // Ödəniş yaratmaq üçün yenidən çağırırıq
+    }
+  }, [dispatch, amount, clientSecret]);
 
-  const options = payment ? { clientSecret: payment } : null;
+  const options = clientSecret ? { clientSecret: clientSecret } : null;
 
-  console.log("📢 payment value:", payment);  // 🔍 Debug
 
   return (
+    <div className={style.total}>
+      <div className={style.button}>
+        <button onClick={goToBasket}>Back</button>
+      </div>
     <div className={style.section}>
       <div className={style.heading}>
         <h1>Payment Page</h1>
@@ -94,6 +107,8 @@ const PaymentPage = () => {
           <CheckoutForm total={amount} />
         </Elements>
       )}
+    </div>
+
     </div>
   );
 };

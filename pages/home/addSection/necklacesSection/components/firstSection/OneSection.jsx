@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "./OneSection.module.scss"
 const OneSection = () => {
+  window.scrollTo(0, 0);
   return (
     <div className={styles.divSection}>
         <div className={styles.section}>

@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "./FirstSec.module.scss"
 const FirstSec = () => {
+  window.scrollTo(0, 0);
   return (
     <div className={styles.section}>
             <div className={styles.image}>

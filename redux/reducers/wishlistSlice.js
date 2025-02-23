@@ -26,11 +26,14 @@ export const postWishlistThunk = createAsyncThunk('post/wishlist', async (data, 
     if (existingProduct) {
         return;
     }
+
+
     
     // Əks halda məhsulu əlavə et
     const response = await axios.post('http://localhost:5000/wishlist', data)
     return data
 })
+
 
 // Wishlist slice
 export const wishlistSlice = createSlice({

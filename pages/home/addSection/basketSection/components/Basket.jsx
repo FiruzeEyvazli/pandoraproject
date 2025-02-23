@@ -37,8 +37,6 @@ const Basket = () => {
     return basket.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
-
-  
   const handleCheckout = async () => {
     const totalAmount = getTotalAmount();  
     if (basket.length === 0) {
@@ -47,26 +45,25 @@ const Basket = () => {
     }
     
     try {
-      // Redux thunk ilə backend-ə request göndəririk
-      const action = await dispatch(createPaymentIntentThunk(totalAmount * 100)); // Stripe sent ilə işləyir
+      // Ödəniş intentini yaratmaq üçün redux thunk-ı çağırırıq
+      const action = await dispatch(createPaymentIntentThunk(totalAmount * 100)); // Cəmi sentlə göndəririk
       
       if (createPaymentIntentThunk.fulfilled.match(action)) {
         const clientSecret = action.payload;
         console.log("✅ Alınan clientSecret:", clientSecret);  
-
-
+  
         if (!clientSecret) {
           console.error("❌ clientSecret alınmadı!");
           alert("Ödəniş üçün lazımi məlumat tapılmadı.");
           return;
         }
-
-        // Ödəniş səhifəsinə yönləndirik
+  
+        // `clientSecret` və digər məlumatları `PaymentPage`-ə göndəririk
         navigate("/payment", { 
           state: { 
             basket, 
             totalAmount, 
-            clientSecret  // Əmin ol ki, clientSecret düzgün göndərilib
+            clientSecret  // `clientSecret`-i burda göndəririk
           }
         });
       } else {
@@ -77,7 +74,7 @@ const Basket = () => {
       alert("Ödəniş əməliyyatı zamanı xəta baş verdi.");
     }
   };
-
+  
   
 
   const handleDeleteBasket = (itemId) => {

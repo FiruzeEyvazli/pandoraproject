@@ -5,101 +5,102 @@
 }
 
 .container {
-    width: 30%;
     display: flex;
-    align-items: center;
-    flex-direction: column;
     justify-content: center;
-    height: auto;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
 
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 250px;
+    height: 380px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    gap: 13px;
+    position: relative;
 
-    .card{
-        display: flex;
-        flex-direction: column;
+    &:hover {
+        transform: scale(1.00);
+        z-index: 10;
+    }
+
+    .imgBox {
         width: 100%;
+        height: 250px;
+        display: flex;
+        justify-content: center;
         align-items: center;
-        gap: 20px;
-        // justify-content: center;
-        transition: transform 0.3s ease, z-index 0s ease;
-        height: 400px;
+        overflow: hidden;
 
-        &:hover {
-            transform: scale(1.1);
-            z-index: 10;
-        }
-        .imgBox {
+        img {
             width: 100%;
-            height: 60%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-
-            .buttons{
-                display: flex;
-                position: absolute;
-                top: 16px;
-                right: 16px;
-                gap: 13px;
-                width: 20%;
-
-
-
-                .heart{
-                    font-size: 18px;
-                }
-                    button{
-                        border: none;
-                        background-color: transparent;
-                        font-size: 20px;
-                        cursor: pointer;
-
-                        &:hover{
-                            color: #D91F46;
-                        }
-                    }
-                
-            }
-    
-            img {
-                width: 100%;
-                height: 100%;
-                
-            }
-            
-            .addedMessage {
-                position: absolute;
-                top: -20px;  // Yuxarıya doğru çəkirik
-                left: 70px;
-                transform: translateX(-50%);  // Yatay mərkəzləşdiririk
-                font-size: 13px;
-                font-weight: 500;
-                color: rgb(83, 82, 82);
-                padding: 5px 20px;
-                text-align: center;
-                animation: fadeIn 0.5s ease-out;  // Animasiya əlavə edirik
-            }
-        
+            height: 100%;
+            object-fit: cover;
         }
 
-        
+        .addedMessage {
+            position: absolute;
+            top: 5px;  // Kartın üstündən 10px aşağıda yerləşsin
+            right: 10px; // Kartın sağ tərəfində 10px məsafə ilə yerləşsin
+            font-size: 14px;
+            font-weight: 600;
+            color: #665f60;  // Qırmızı rəngdə daha vurğulu göstəririk
+            background-color: rgba(255, 255, 255, 0.8);  // Yüngül ağ fon
+            padding: 5px 10px;
+            border-radius: 5px;  // Bucaqları yuvarlaqlaşdırırıq
+            animation: fadeIn 0.5s ease-out;  // Animasiya ilə yavaşca görünsün
+          }
+          
 
-        .text{
+        .buttons {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            h3{
-                font-size: 14px;
-                font-weight: 600;
-            }
+            position: absolute;
+            top: 15px;
+            right: 13px;
+            gap: 8px;
 
-            p{
-                color: #D91F46;
-                font-size: 14px;
+            button {
+                border: none;
+                background: transparent;
+                font-size: 20px;
+                cursor: pointer;
+                color: #333;
+
+                &:hover {
+                    color: #D91F46;
+                }
             }
         }
     }
 
+    .text {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        p {
+            color: #D91F46;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    }
 }
 
 
@@ -108,7 +109,7 @@
 @media (max-width: 967px){
     .container{
         height: auto;
-        width: 40%;
+        width: 100%;
 
     }
 }
@@ -118,7 +119,7 @@
 @media (max-width: 767px){
     .container{
         height: auto;
-        width: 40%;
+        width: 100%;
 
     }
 }
@@ -127,7 +128,7 @@
 @media (max-width: 576px){
     .container{
         height: auto;
-        width: 60%;
+        width: 100%;
 
     }
 }

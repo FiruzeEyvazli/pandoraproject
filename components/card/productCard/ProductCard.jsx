@@ -2,60 +2,56 @@ import React, { useState } from 'react'
 import styles from "./ProductCard.module.scss"
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { FaRegHeart } from "react-icons/fa";
-const ProductCard = ({item, AddBasket, AddWishlist}) => {
+const ProductCard = ({ item, AddBasket, AddWishlist }) => {
 
   const [addedToBasket, setAddedToBasket] = useState(false);
   const [addedToWishlist, setAddedToWishlist] = useState(false);
 
 
-
-  const handleAddToBasket = () => {
-    AddBasket(item);  // Məhsulu basketə əlavə et
-    setAddedToBasket(true);  // Məhsul əlavə edildikdən sonra "Added" mesajını göstər
-
-    // "Added" mesajının 2 saniyə sonra yox olması üçün setTimeout istifadə edirik
-    setTimeout(() => {
-      setAddedToBasket(false);  // 2 saniyə sonra mesajı gizlə
-    }, 500);  // 2000 ms (2 saniyə)
+  const handleAddToBasket = (event) => {
+    event.preventDefault();  // Link klikini tamamilə bloklayır
+    event.stopPropagation(); // Parent klikləri də bloklayır
+    AddBasket(item);
+    setAddedToBasket(true);
+    setTimeout(() => setAddedToBasket(false), 500);
   };
-
-  const handleAddToWishlist = () => {
-    AddWishlist(item);  // Məhsulu basketə əlavə et
-    setAddedToWishlist(true);  // Məhsul əlavə edildikdən sonra "Added" mesajını göstər
-
-    // "Added" mesajının 2 saniyə sonra yox olması üçün setTimeout istifadə edirik
-    setTimeout(() => {
-      setAddedToWishlist(false);  // 2 saniyə sonra mesajı gizlə
-    }, 500);  // 2000 ms (2 saniyə)
+  
+  const handleAddToWishlist = (event) => {
+    event.preventDefault();  // Link klikini tamamilə bloklayır
+    event.stopPropagation(); // Parent klikləri də bloklayır
+    AddWishlist(item);
+    setAddedToWishlist(true);
+    setTimeout(() => setAddedToWishlist(false), 500);
   };
+  
 
 
   return (
     <div className={styles.container}>
-    <div className={styles.card}>
+      <div className={styles.card}>
         <div className={styles.imgBox}>
-            <img src={item.image} alt="products" />
-        <div className={styles.buttons}>
-        <button onClick={handleAddToWishlist}>
-        <FaRegHeart />
-              {/* Məhsul əlavə edildikdə "Added" mesajını göstər */}
+          <img src={item.image} alt="products" />
+          <div className={styles.buttons}>
+            <button onClick={(event) => handleAddToWishlist(event)}>
+              <FaRegHeart />
               {addedToWishlist && <span className={styles.addedMessage}>Added</span>}
             </button>
-            <button onClick={handleAddToBasket}>
+
+            <button onClick={(event) => handleAddToBasket(event)}>
               <HiOutlineShoppingBag />
-              {/* Məhsul əlavə edildikdə "Added" mesajını göstər */}
               {addedToBasket && <span className={styles.addedMessage}>Added</span>}
             </button>
-        </div>
+
+          </div>
         </div>
         <div className={styles.text}>
-        <h3>{item.title}</h3>
-        <p>{item.price}$</p>
-       
+          <h3>{item.title}</h3>
+          <p>{item.price}$</p>
+
         </div>
 
+      </div>
     </div>
-</div>
   )
 }
 

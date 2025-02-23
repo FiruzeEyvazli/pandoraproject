@@ -8,6 +8,8 @@ import CategoryCard from '../../../../../../components/card/categoryCard/Categor
 const Bracelet = () => {
     const dispatch = useDispatch();
 
+    window.scrollTo(0, 0);
+
     const category = useSelector(state => state.category.category);
     const loading = useSelector(state => state.category.loading);
     const error = useSelector(state => state.category.error);

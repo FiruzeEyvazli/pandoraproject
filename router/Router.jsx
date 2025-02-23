@@ -1,5 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import Home from '../pages/home/Home'
 import PandoraCares from '../pages/home/addSection/pandoraCares/PandoraCares'
 import AboutPandora from '../pages/home/addSection/aboutPandora/AboutPandora'
@@ -17,10 +19,20 @@ import CollectionsSection from '../pages/home/addSection/collectionsSection/Coll
 import LoginSection from '../pages/home/addSection/login/LoginSection'
 import Profile from '../pages/home/addSection/profile/Profile'
 import RegisterContent from '../pages/home/addSection/register/RegisterContent'
+import PrivateRoute from '../pages/home/addSection/privateRouter/PrivateRoute'
+import PaymentPage from '../pages/home/addSection/payment/PaymentPage';
+import Succes from '../pages/home/addSection/payment/succes/Succes';
+
 import DetailPage from '../pages/home/addSection/detailPage/DetailPage'
-import Payment from '../pages/home/addSection/payment/Payment'
+import NotFound from '../pages/home/notFound/NotFound';
+
+
+
+// const stripePromise = loadStripe("pk_test_51QuzeY4Q6NZiWKpIOcdzFHN9LcJAbQqC1CthxYvBYeHpIT0IDJQStusR2BspKzM6H1U9Spp697aM0aRUuVyoVI7D00fPG56T5u");
 
 const Router = () => {
+
+
   return (
     <div>
       <BrowserRouter>
@@ -40,9 +52,15 @@ const Router = () => {
           <Route path='/necklaces' element={<NecklacesSection />} />
           <Route path='/collection' element={<CollectionsSection />} />
           <Route path='/register' element={<RegisterContent />} />
-          <Route path='/profile' element={<Profile />} />
+          {/* <Route path='/profile' element={<Profile />} /> */}
           <Route path='/login' element={<LoginSection />} />
-          <Route path='/payment' element={<Payment />} />
+          <Route path="/product/:id" element={<DetailPage />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+          <Route path='/payment' element={<PaymentPage />} />
+          <Route path='/payment-success' element={<Succes />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
