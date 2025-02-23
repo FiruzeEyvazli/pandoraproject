@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+
+    .header{
+        h1{
+            font-size: 35px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+    }
+    
+    .products {
+        display: flex;
+        width: 85%;
+        gap: 30px;
+        justify-content: center;
+        align-items: center;
+
+
+        a {  // Bütün Link-lərə stil tətbiq edirik
+            text-decoration: none;  // Altı xətti silirik
+            color: inherit;  // Mətn rəngi normal saxlanır
+            display: block;  // Link kartın tam ətrafını əhatə etsin
+            transition: transform 0.3s ease;
+    
+            &:hover {
+                transform: scale(1.05); // Hover zamanı böyümə effekti
+            }
+        }
+    }
+
+
+    .onclick{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        padding-top: 50px;
+    
+        .buttons{
+            border: none;
+            padding: 10px;
+            background-color: #27251F;
+            color: white;
+            font-size: 15px;
+
+            &:hover{
+                background-color: black;
+            }
+    
+        }
+    }
+}
+
+
+
+
+@media (max-width: 967px){
+    .section{
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        .products{
+            height: auto;
+            width: 70%;
+            flex-wrap: wrap;
+            display: flex;
+            gap: 30px;
+        }
+    }
+}
+
+
+
+@media (max-width: 767px){
+    .section{
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 15%;
+
+        
+
+        .header{
+            h1{
+                font-size: 28px;
+            }
+        }
+        .products{
+            height: auto;
+            width: 80%;
+            flex-wrap: wrap;
+            display: flex;
+            gap: 30px;
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .section{
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        .products{
+            height: auto;
+            width: 90%;
+            flex-wrap: wrap;
+            display: flex;
+        }
+    }
+}

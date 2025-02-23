@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.section {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    height: auto;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    margin-bottom: 10%;
+
+    .header{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        gap: 400px;
+
+        .one{
+            h1{
+                font-size: 35px;
+                font-weight: 700;
+            }
+        }
+
+    }
+    .two{
+        display: flex;
+        margin-left: 65%;
+        align-items: center;
+        border: 1;
+
+        p{
+            font-size: 20px;
+            font-weight: 500;
+            border-bottom: 2px solid #27251F;
+            padding: 8px;
+            color: black;
+            align-items: center;
+            justify-content: center;
+
+            &:hover{
+                background-color: #ece9e9;
+            }
+        }
+    }
+    
+    .products {
+        display: flex;
+        width: 90%;
+        gap: 50px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        height: auto;
+
+    }
+
+
+    .onclick{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        padding-top: 30px;
+    
+        .buttons{
+            border: none;
+            padding: 10px;
+            background-color: #27251F;
+            color: white;
+            font-size: 15px;
+
+            &:hover{
+                background-color: black;
+            }
+    
+        }
+    }
+}
+
+
+
+
+
+
+@media (max-width: 1024px) {
+    .section {
+      gap: 20px;
+    }
+  
+    .header .one h1 {
+      font-size: 28px;
+    }
+  
+    .two p {
+      font-size: 16px;
+    }
+  
+    .products {
+      gap: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header .one h1 {
+      font-size: 25px;
+    }
+  
+    .two p {
+      font-size: 15px;
+    }
+  
+    .products {
+      width: 100%;
+      gap: 15px;
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .section {
+      gap: 15px;
+    }
+  
+    .header .one h1 {
+      font-size: 22px;
+    }
+  
+    .two p {
+      font-size: 14px;
+    }
+  
+    .products {
+      gap: 10px;
+      flex-direction: column;
+    }
+  
+    .onclick .buttons {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+  }

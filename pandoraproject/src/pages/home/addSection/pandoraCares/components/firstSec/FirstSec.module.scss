@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding-block-end: 0;
+    box-sizing: border-box;
+}
+
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    .imgBox{
+        width: 100%;
+        height: auto;
+
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+    .section{
+        height: auto;
+    }
+}
